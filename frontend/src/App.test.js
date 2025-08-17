@@ -1,8 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import { StoreProvider } from './Store';
+import { HelmetProvider } from 'react-helmet-async';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders navbar brand', () => {
+  render(
+    <StoreProvider>
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
+    </StoreProvider>
+  );
+  const brandElement = screen.getByText(/amazona/i);
+  expect(brandElement).toBeInTheDocument();
 });
